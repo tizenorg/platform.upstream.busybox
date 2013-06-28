@@ -7,6 +7,7 @@ Url:            http://www.busybox.net/
 Group:          System/Base
 Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source2:        busybox.tizen.config
+Source1001: 	busybox.manifest
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
@@ -21,6 +22,7 @@ counterparts.
 
 %prep
 %setup -q
+cp %{SOURCE1001} .
 cp -a %{SOURCE2} .config
 
 %build
@@ -41,6 +43,7 @@ install applets/install.sh %{buildroot}%{_bindir}/busybox.install
 install busybox %{buildroot}%{_prefix}/bin
 
 %files
+%manifest %{name}.manifest
 %defattr(-,root,root)
 %license LICENSE
 %{_bindir}/busybox
