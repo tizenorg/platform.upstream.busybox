@@ -8,6 +8,8 @@ Group:          System/Base
 Source:         http://busybox.net/downloads/%{name}-%{version}.tar.bz2
 Source2:        busybox.tizen.config
 Source1001: 	busybox.manifest
+Provides: bash sed pwdutils kmod-compat grep util-linux xz kbd gawk coreutils gzip cpio findutils rpm
+
 
 %description
 BusyBox combines tiny versions of many common UNIX utilities into a
