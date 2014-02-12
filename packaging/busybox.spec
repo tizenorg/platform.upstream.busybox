@@ -41,8 +41,15 @@ install -d %{buildroot}%{_datadir}/busybox
 install busybox.links %{buildroot}%{_datadir}/busybox
 install applets/install.sh %{buildroot}%{_bindir}/busybox.install
 install busybox %{buildroot}%{_prefix}/bin
+install -d %{buildroot}%{_bindir}
+install -d %{buildroot}/bin
+install -d %{buildroot}/sbin
+install -d %{buildroot}%{_prefix}/sbin
+for f in $(cat %{buildroot}%{_datadir}/busybox/busybox.links) ; do
+    ln -s ../../bin/busybox %{buildroot}$f
+done
 
-%files
+%files -f busybox.links
 %manifest %{name}.manifest
 %defattr(-,root,root)
 %license LICENSE
