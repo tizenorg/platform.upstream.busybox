@@ -51,6 +51,10 @@ for f in $(cat %{buildroot}%{_datadir}/busybox/busybox.links) ; do
     ln -s ../../bin/busybox %{buildroot}$f
 done
 
+ln -s ../../bin/busybox %{buildroot}/usr/bin/cat
+ln -s ../../bin/busybox %{buildroot}/usr/bin/sed
+
+
 %files -f busybox.links
 %manifest %{name}.manifest
 %defattr(-,root,root)
@@ -59,5 +63,8 @@ done
 %{_bindir}/busybox.install
 %dir %{_datadir}/busybox
 %config %{_datadir}/busybox/busybox.links
+/usr/bin/cat
+/usr/bin/sed
+
 
 %changelog
